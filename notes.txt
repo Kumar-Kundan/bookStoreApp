@@ -1,0 +1,29 @@
+commands to setup react with tailwind project
+- npm create vite@latest . //here .(dot) is to setup project in current directory
+- type 'y' and enter
+- select react framework and select javascript variant
+- npm install tailwindcss @tailwindcss/vite
+- in vite.config.js, add import tailwindcss from '@tailwindcss/vite' , tailwindcss() to your plugins 
+- in index.css, override with @import "tailwindcss";
+
+
+
+
+To add google font
+- add google font(Poppins, Fredoka) to cart  
+- change font to medium-500
+- import this index.css file: @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:wght@500&display=swap');
+- body{
+    font-family: 'Poppins', sans-serif;
+    }
+
+
+To add slider
+- go to react slick slider
+- go to docs -> install- npm install react-slick --save
+- to include css -> install - npm install slick-carousel --save
+- import "slick-carousel/slick/slick.css";
+  import "slick-carousel/slick/slick-theme.css";
+- go to examples -> responsive
+- copy setting -> copy slider
+- import Slider from "react-slick";
