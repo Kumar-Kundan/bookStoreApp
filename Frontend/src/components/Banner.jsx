@@ -25,7 +25,7 @@ function Banner() {
                             <input type="text" className='grow dark:text-white dark:placeholder-gray-500 ' placeholder="Enter email to login" />
                         </label>
                     </div>
-                    <button className="btn mt-6 btn-secondary">Secondary</button>
+                    <button className="btn mt-6 btn-secondary">Get Started</button>
                 </div>
                 <div className='w-full order-1 md:w-1/2'>
                     <img src={book} className="w-3xl" alt='' />

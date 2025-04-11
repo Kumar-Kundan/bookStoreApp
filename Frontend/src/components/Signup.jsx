@@ -1,16 +1,42 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Login from './Login'
 import { useForm } from "react-hook-form"
+import axios from "axios";
+import toast from 'react-hot-toast';
 
 function Signup() {
+  //for navigating to home
+  const location =useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
    const {
       register,
       handleSubmit,
       formState: { errors },
-    } = useForm()
+    } = useForm();
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) =>{
+      const userInfo = {
+        fullname:data.name,
+        email:data.email,
+        password:data.password
+      };
+      await axios.post("http://localhost:4001/user/signup",userInfo)
+      .then((res)=>{
+        console.log(res.data)
+        if(res.data){
+          toast.success("User created successfully!!");
+          localStorage.setItem("User",JSON.stringify(res.data.user));
+          navigate(from, {replace: true});
+        }
+      }).catch((err)=>{
+        if(err.response){
+          toast.error("Error : " + err.response.data.message);
+        }
+      });
+    };
 
   return (
     <div className="h-screen flex items-center justify-center">
@@ -43,7 +69,10 @@ function Signup() {
             <button className='bg-pink-600 text-white hover:bg-pink-700 rounded-md px-2 py-1'>Signup</button>
             <p>
               Have account?
-              <button className='text-blue-500 underline cursor-pointer' onClick={() => document.getElementById("my_modal_3").showModal()} >
+              <button className='text-blue-500 underline cursor-pointer' 
+              onClick={() => {
+                document.getElementById("my_modal_3").showModal();
+                }} >
                 Login
               </button>
               <Login />

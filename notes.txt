@@ -27,3 +27,7 @@ To add slider
 - go to examples -> responsive
 - copy setting -> copy slider
 - import Slider from "react-slick";
+
+for good looking popup: (install react hot toast)
+- npm install react-hot-toast
+- read documentation
